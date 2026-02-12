@@ -1,0 +1,64 @@
+# ========================
+# Python (Backend)
+# ========================
+# 컴파일된 바이트코드 (실행 시 자동 생성됨)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 가상환경 (용량이 크고 로컬 환경마다 다름)
+venv/
+.venv/
+env/
+backend/venv/
+backend/.venv/
+
+# 환경 변수 및 비밀 키 (보안상 절대 커밋 금지)
+.env
+.env.*
+!.env.example
+
+# Pytest / Coverage (테스트 관련)
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ========================
+# Node.js / TypeScript (Frontend)
+# ========================
+node_modules/
+frontend/node_modules/
+
+# 빌드 결과물 (소스코드만 관리하면 됨)
+/dist
+/build
+frontend/dist/
+frontend/build/
+
+# 로그 파일
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 환경 변수 (프론트엔드)
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vite 캐시 등
+.eslintcache
+
+# ========================
+# OS & IDE (Editor)
+# ========================
+
+
+# Windows
+Thumbs.db
+
+# VS Code (개인 설정 파일)
+.vscode/
+
+# JetBrains (PyCharm, WebStorm 등)
+.idea/
