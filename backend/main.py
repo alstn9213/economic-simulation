@@ -26,7 +26,16 @@ game = EconomySimulation()
 # --- 데이터 모델 정의 (Pydantic) ---
 # 프론트엔드에서 보낼 데이터 형식을 정의합니다.
 class PolicyRequest(BaseModel):
-    stimulus: float  # 지원금 액수
+    stimulus: float = 0     # 재난 지원금
+    tax_cut: float = 0      # 법인세 인하
+    public_works: float = 0 # 공공 사업
+    tax_rate: float = 10.0  # 세금 징수율 (기본 10%)
+    bond_issuance: float = 0 # 국채 발행량
+    debt_repayment: float = 0 # 부채 상환액
+    rnd_investment: float = 0 # R&D 투자액
+    currency_defense: float = 0 # 환율 방어 투입액
+    housing_supply: float = 0 # 주택 건설 투자액
+    ltv_dti_rate: float = 0.0 # LTV/DTI 규제 강도 (0~100%)
 
 # --- API 엔드포인트 ---
 
@@ -43,7 +52,7 @@ def get_status():
 def next_turn(policy: PolicyRequest):
     """정책을 적용하고 다음 턴으로 진행합니다."""
     # 1. 정책 적용
-    game.apply_policy(policy.stimulus)
+    game.apply_policy(policy.stimulus, policy.tax_cut, policy.public_works, policy.tax_rate, policy.bond_issuance, policy.debt_repayment, policy.rnd_investment, policy.currency_defense, policy.housing_supply, policy.ltv_dti_rate)
     # 2. 시장 반응 계산
     game.calculate_market_reaction()
     # 3. 결과 반환
