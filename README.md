@@ -8,5 +8,14 @@ frontend: react, TypeScript
 
 ## 특징
 
-- 기간별로 정책의 효과가 나타납니다.
-  - 재난지원금 지급후 한달간의 영향
+- 백엔드를 python으로 구축해 간단히 실행할 수 있습니다.
+
+
+## 실행
+```
+cd backend
+uvicorn main:app --reload
+
+cd frontend
+npm run dev
+```
