@@ -6,7 +6,9 @@ export interface EconomyState {
   inflation_rate: number;
   interest_rate: number;
   happiness: number;
-  budget: number;
+  national_debt: number;
+  gdp: number;
+  gdp_growth_rate: number;
 }
 
 export const useEconomy = () => {

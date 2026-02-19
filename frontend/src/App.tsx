@@ -11,6 +11,7 @@ function App() {
     handleReset
   } = useEconomy();
 
+
   // 화면 렌더링
   if (!economy) return <div className="loading">경제 데이터 로딩 중...</div>;
 
@@ -31,9 +32,17 @@ function App() {
           <h3>💰 시중 통화량</h3>
           <p className="value">{economy.money_supply.toFixed(1)}조 원</p>
         </div>
+        <div className={`card ${economy.national_debt > economy.gdp * 0.6 ? 'danger' : ''}`}>
+          <h3>📉 국가 부채</h3>
+          <p className="value">{economy.national_debt.toFixed(1)}조 원</p>
+        </div>
         <div className="card">
-          <h3>💼 국가 예산</h3>
-          <p className="value">{economy.budget.toFixed(1)}조 원</p>
+          <h3>📊 명목 GDP</h3>
+          <p className="value">{economy.gdp.toFixed(1)}조 원</p>
+        </div>
+        <div className={`card ${economy.gdp_growth_rate < 0 ? 'danger' : ''}`}>
+          <h3>🚀 경제 성장률</h3>
+          <p className="value">{economy.gdp_growth_rate.toFixed(2)}%</p>
         </div>
         <div className={`card ${economy.inflation_rate > 4 ? 'danger' : ''}`}>
           <h3>📈 물가상승률</h3>
@@ -60,11 +69,7 @@ function App() {
             value={stimulus}
             onChange={(e) => {
               const val = parseFloat(e.target.value);
-              if (economy && val > economy.budget) {
-                setStimulus(economy.budget.toString());
-              } else {
-                setStimulus(e.target.value);
-              }
+              setStimulus(e.target.value);
             }}
             placeholder="0"
           />
