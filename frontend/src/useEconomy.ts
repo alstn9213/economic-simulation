@@ -3,10 +3,17 @@ import { useState, useEffect } from 'react';
 export interface EconomyState {
   turn: number;
   money_supply: number;
+  money_growth_rate: number;
   inflation_rate: number;
+  inflation_change: number;
+  real_purchasing_power: number;
+  real_purchasing_power_change: number;
   interest_rate: number;
+  interest_change: number;
   happiness: number;
+  happiness_change: number;
   national_debt: number;
+  debt_growth_rate: number;
   gdp: number;
   gdp_growth_rate: number;
 }
@@ -50,7 +57,7 @@ export const useEconomy = () => {
 
       if (response.ok) {
         const data = await response.json();
-        setEconomy(data); // 갱신된 데이터로 화면 업데이트
+        setEconomy(data);
       }
     } catch (error) {
       console.error("API 오류:", error);
