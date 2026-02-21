@@ -42,10 +42,9 @@ class EconomySimulation:
             
             # GDP 부양 효과 (소비쿠폰)
             # 소비쿠폰은 강제 소비를 유도하므로 단기 GDP 부양 효과가 있음
-            # 재정 승수 조정: 소비 대체 효과(기존 현금 대신 쿠폰 사용)를 고려하여 0.5
-            # (투입 금액의 50% 정도만 실질적인 추가 부가가치 창출로 연결된다고 가정)
+            # 투입 금액의 50% 정도만 실질적인 추가 부가가치 창출로 연결된다고 가정(나머지는 저축 등으로 빠짐)
             fiscal_multiplier = 0.5
-            # [현실 고증 추가] 인플레이션이 높으면 돈을 풀어도 물가만 오르고 실질 GDP 부양 효과는 떨어짐 (공급 제약)
+            # 인플레이션이 높으면 돈을 풀어도 물가만 오르고 실질 GDP 부양 효과는 떨어짐 (공급 제약)
             if self.inflation_rate > 3.0:
                 fiscal_multiplier = 0.2  # 이미 물가가 높으면 부양 효과 급감
 
@@ -85,7 +84,7 @@ class EconomySimulation:
         # 중립금리(2.0) 대비 1%p 상승 시 성장률 0.1%p 하락 가정
         rate_drag = (self.interest_rate - 2.0) * 0.1
 
-        # [현실 고증 추가] 인플레이션 불확실성 효과: 고물가는 기업 투자를 위축시킴 (스태그플레이션 압력)
+        # 인플레이션 불확실성 효과: 고물가는 기업 투자를 위축시킴 (스태그플레이션 압력)
         inflation_drag = 0.0
         if self.inflation_rate > 4.0:
             inflation_drag = (self.inflation_rate - 4.0) * 0.15
