@@ -15,7 +15,6 @@
 - **Language:** Python 3.14
 - **Framework:** FastAPI
 - **Server:** Uvicorn
-- **Architecture:** 경제 시뮬레이션 코어 객체(`EconomySimulation`)를 통한 상태 관리 및 API 제공
 
 ### Frontend
 - **Language:** TypeScript
@@ -29,22 +28,30 @@
 1. **승수 효과 및 GDP 부양 (Multiplier Effect)**
    - 투입된 지원금이 시중 통화량을 증가시키고 단기적인 명목 GDP 성장을 견인합니다.
    - 단, 인플레이션이 심화된 상태에서는 실질적인 부가가치 창출(부양 효과)이 급감하도록 설계되었습니다.
+   <br/>
    ![alt text](./images/gdp부양.png)
 2. **물가 상승 및 인플레이션 (Inflation & Phillips Curve)**
    - 통화량이 잠재성장률보다 빠르게 늘어나거나, 실제 성장률이 잠재성장률을 초과(GDP Gap)할 경우 물가 상승 압력이 가중됩니다.
+   <br/>
    ![alt text](./images/잠재초과인플레.png)
+   <br/>
    - 소비쿠폰 지급으로 인한 단기 화폐 유통 속도(Velocity) 증가 충격을 반영했습니다.
+   <br/>
    ![alt text](./images/화폐유통속도.png)
-   
+   <br/>
    (화페 유통 속도는 인플레이션 상승에 영향을 줍니다.)
    ![alt text](./images/인플레.png)
 3. **국가 부채와 구축 효과 (Crowding-out Effect)**
    - 지원금 재원을 적자 국채로 조달한다고 가정하여 국가 부채가 증가합니다.
    - GDP 대비 부채 비율이 일정 수준을 초과하면 경제 성장률을 갉아먹고, 리스크 프리미엄이 발생해 금리 하한선이 상승합니다.
+   <br/>
    ![alt text](./images/리스크프리미엄.png)
+   <br/>
 4. **금리 자동 조정 및 국민 행복도 (Interest Rate & Happiness)**
    - 인플레이션이 목표치를 상회하면 가상의 중앙은행이 기준금리를 인상하여 물가를 억제합니다.
+   <br/>
    ![alt text](./images/금리조정.png)
+   <br/>
    - 금리 상승, 고물가, 실질 구매력 저하, 과도한 부채 비율은 최종적으로 '국민 행복도' 수치를 기하급수적으로 하락시킵니다.
    <br/>
    <br/>
